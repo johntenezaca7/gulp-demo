@@ -1,14 +1,11 @@
-var testModule = (
-  function() {
-    "use strict";
+var testModule = (function() {
+  "use strict";
 
-    var initTestModule = function() {
-      console.log('Init Test Module')
-    }
+  var initTestModule = function() {
+    console.log("Init Test Module");
+  };
 
-    return {
-      initTestModule: initTestModule
-    };
-
-  }()
-);
+  return {
+    initTestModule: initTestModule
+  };
+})();
