@@ -1,0 +1,82 @@
+#container {
+	overflow-x:hidden;
+}
+
+.lightgreen {
+	color: $lightgreen;
+}
+
+//used with headers that don't have underline
+.clear-after {
+    &:after {
+    	margin: 0;
+	    height: 0;
+	}
+}
+
+.ui-helper-hidden-accessible {
+	display: none;
+}
+
+.arrow-right{
+	&:after{
+        content: ' \00BB';
+	}
+}
+
+.no-padding-x-mobile{
+	@include breakpoint(smallonly) {
+		padding-left:0 !important;
+		padding-right:0 !important;
+	}
+}
+
+.padding-x-mobile{
+	@include breakpoint(smallonly) {
+		padding-left:40px !important;
+		padding-right:40px !important;
+	}
+}
+
+.scrollable-menu {
+ 	height: auto;
+    overflow-x: hidden;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.overflowy{
+	overflow-y:hidden;
+}
+
+.styled-list {
+	li {
+		list-style: none;
+		position: relative;
+		&:before {
+			content: "";
+			background: $lightgreen;
+			width: rem(6);
+			height: rem(6);
+			display: inline-block;
+			position: absolute;
+			left: rem(-20);
+			top: rem(16);
+		}
+	}
+}
+
+.white-link {
+	color: white;
+	text-decoration: underline;
+}
+
+.information_message {
+  font-weight: bold;
+	p {
+		text-align: center;
+	}
+}
+
+.positive {
+  color: #00a94e;
+}

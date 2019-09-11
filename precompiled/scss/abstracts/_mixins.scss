@@ -1,0 +1,276 @@
+/*********************
+BREAKPOINTS
+*********************/
+
+ @mixin breakpoint($point) {
+	@if $point == large {
+		@media (min-width: rem(1400)) { @content ; }
+	}
+	@else if $point == mediumlarge {
+		@media (min-width: rem(1200)) { @content ; }
+	}
+
+  @else if $point == bs4large {
+    @media (min-width: rem(992)) { @content ; }
+  }
+	@else if $point == bs4medium {
+		@media (max-width: rem(991)) { @content ; }
+	}
+  @else if $point == medium {
+    @media (min-width: rem(768)) { @content ; }
+  }
+	@else if $point == mediumsmall {
+		@media (min-width: rem(481)) { @content ; }
+  }
+  @else if $point == bs4mediumonly {
+    @media (min-width: rem(768)) and (max-width: rem(991)) { @content ; }
+  }
+  @else if $point == mobileonly {
+    @media (min-width: rem(320)) and (max-width: rem(1200)) { @content ; }
+  }
+  @else if $point == mediumonly {
+    @media (min-width: rem(768)) and (max-width: rem(1200)) { @content ; }
+  }
+  @else if $point == smallonly {
+		@media (min-width: rem(320)) and (max-width: rem(767)) { @content ; }
+  }
+  @else if $point == mediumlargeonly {
+		@media (min-width: rem(1080)) and (max-width: rem(1400)) { @content ; }
+	}
+}
+/********************* USAGE FOR BREAKPOINTS MIXIN
+
+	.usage {
+		width: 100%;
+		@include breakpoint(large) {
+			width: 50%;
+		}
+	}
+
+*********************/
+
+@mixin border-button($bordr-radius,$color,$background-color) {
+    border-radius: $bordr-radius;
+    color: $color;
+    background-color: $background-color;
+}
+/*********Flexbox************/
+// Flexbox display
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// The 'flex' shorthand
+// - applies to: flex items
+// <positive-number>, initial, auto, or none
+@mixin flex($val1, $val2, $values) {
+  -webkit-box-flex: $val1 $val2 $values;
+     -moz-box-flex: $val1 $val2 $values;
+      -webkit-flex: $val1 $val2 $values;
+  	  -ms-flex: $val1 $val2 $values;
+  	      flex: $val1 $val2 $values;
+}
+
+// Flex Flow Direction
+// - applies to: flex containers
+// row | row-reverse | column | column-reverse
+@mixin flex-direction($direction) {
+  -webkit-flex-direction: $direction;
+     -moz-flex-direction: $direction;
+      -ms-flex-direction: $direction;
+          flex-direction: $direction;
+}
+
+// Flex Line Wrapping
+// - applies to: flex containers
+// nowrap | wrap | wrap-reverse
+@mixin flex-wrap($wrap) {
+  -webkit-flex-wrap: $wrap;
+     -moz-flex-wrap: $wrap;
+      -ms-flex-wrap: $wrap;
+          flex-wrap: $wrap;
+}
+
+// Flex Direction and Wrap
+// - applies to: flex containers
+// <flex-direction> || <flex-wrap>
+@mixin flex-flow($dir, $flow) {
+  -webkit-flex-flow: $dir $flow;
+     -moz-flex-flow: $dir $flow;
+      -ms-flex-flow: $dir $flow;
+          flex-flow: $dir $flow;
+}
+
+// Display Order
+// - applies to: flex items
+// <integer>
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+     -moz-box-ordinal-group: $val;
+  	     -ms-flex-order: $val;
+  	      -webkit-order: $val;
+  		      order: $val;
+}
+
+// Cross-axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | baseline | stretch
+@mixin align-items($align) {
+  -webkit-align-items: $align;
+      -moz-align-items: $align;
+      -ms-align-items: $align;
+      -ms-flex-align: $align;
+          align-items: $align;
+}
+
+ @mixin btn-base($color,$background-color,$border){
+   height: rem(50);
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-weight: 600;
+   text-transform: uppercase;
+   border-radius: 0;
+  @if $border == "none" {
+    padding: rem(15) rem(30);
+  }
+  @else{
+    padding: 14px 20px;
+  }
+   line-height: 1;
+   color:$color;
+   background-color:$background-color;
+   min-width: 250px;
+   vertical-align: middle;
+   white-space: nowrap;
+   border:$border;
+   font-size: rem(20px);
+   font-family: 'Titillium Web', sans-serif;
+
+   @include breakpoint(smallonly) {
+    font-size:rem(16);
+   }
+
+
+ }
+
+@mixin opacity($value){
+  $IEValue: $value*100;
+  opacity: $value;
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity="+$IEValue+")";
+  filter: alpha(opacity=$IEValue);
+}
+
+//icons mixin
+@mixin image_icon($url, $width, $height) {
+  display: inline-block;
+  width: rem($width);
+  height: rem($height);
+  background: transparent;
+  background-image: url($url);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+// generic transform
+@mixin transform($transforms) {
+  -moz-transform: $transforms;
+  -o-transform: $transforms;
+  -ms-transform: $transforms;
+  -webkit-transform: $transforms;
+  transform: $transforms;
+}
+
+// rotate
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+}
+
+// scale
+@mixin scale($scale...) {
+  @include transform(scale($scale));
+}
+// translate
+@mixin translate ($x, $y) {
+  @include transform(translate($x, $y));
+}
+// skew
+@mixin skew ($x, $y) {
+  @include transform(skew(#{$x}deg, #{$y}deg));
+}
+//transform origin
+@mixin transform-origin ($origin) {
+  -moz-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -webkit-transform-origin: $origin;
+  transform-origin: $origin;
+}
+
+
+@mixin arrow($color){
+	border: solid $color;
+  border-width: 0 rem(3) rem(3) 0;
+  display: inline-block;
+  padding: rem(4);
+  float: right;
+}
+
+// Globe Pagination Style, $size = integer;
+@mixin paginationArrow($size) {
+  content: '';
+  border: solid $mediumgrey2;
+  border-width: 0 rem($size) rem($size) 0;
+  display: inline-block;
+  padding: rem($size);
+  margin-bottom: 3px;
+  cursor: pointer;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}
+}
+
+@mixin box-sizing($box) {
+  -moz-box-sizing: $box;
+  -webkit-box-sizing: $box;
+  box-sizing: $box;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+@mixin transition($transition...) {
+    -moz-transition:    $transition;
+    -o-transition:      $transition;
+    -webkit-transition: $transition;
+    -ie-transition:     -ie-transform $transition;
+    transition:         $transition;
+}
+
+// Axis Alignment
+// - applies to: flex containers
+// flex-start | flex-end | center | space-between | space-around
+@mixin justify-content($justify) {
+  -webkit-justify-content: $justify;
+     -moz-justify-content: $justify;
+      -ms-justify-content: $justify;
+          justify-content: $justify;
+            -ms-flex-pack: $justify;
+}
