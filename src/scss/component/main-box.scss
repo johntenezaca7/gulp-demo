@@ -1,0 +1,11 @@
+$object: "main-box"; 
+
+.#{$object} {
+  &__name {
+    color: $softBlue;
+  }
+
+  &__details {
+    color: black;
+  }
+}
