@@ -1,0 +1,50 @@
+$object: "navbar";
+
+.#{$object} {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  background: rgb(255, 255, 255);
+  
+
+  &__link-wrapper {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 4px -8px 20px rgb(0, 0, 0);
+  }
+
+  &__link {
+    margin: 0 1rem;
+    padding: 1rem;
+
+    a {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: $black;
+      font-size: 1.8rem;
+    }
+  }
+
+  &--index-page {
+    position: relative;
+
+    .#{$object} {
+      &__link-wrapper {
+        box-shadow: none;
+      }
+
+      &__link {
+        a {
+          &:hover {
+            border-bottom: 2px solid $black;
+          }
+        }
+      }
+    }
+  }
+}

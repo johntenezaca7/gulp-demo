@@ -1,0 +1,11 @@
+$object: "dynamic-landing-page";
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+
+.#{$object} {
+  font-family: 'Quicksand', sans-serif;
+
+  &__title {
+    text-align: center;
+    margin: 4rem;
+  }
+}

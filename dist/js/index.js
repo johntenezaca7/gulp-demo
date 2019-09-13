@@ -1,1 +1,1 @@
-$("h1").on("click",function(){console.log("Click me!")}),console.log("main");
+$(document).ready(function(){console.log("-- Document Ready --"),dynamicLandingModule.dynamicLandingModuleInit(),smoothScrollModule.smoothScrollModuleInit()});var dynamicLandingModule=function(){"use strict";var o=function(){console.log("Dynamic Landing Module")};return{dynamicLandingModuleInit:o}}(),smoothScrollModule=function(){"use strict";var o=function(){console.log("Smooth Scroll Module")};return{smoothScrollModuleInit:o}}();

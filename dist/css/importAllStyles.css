@@ -1,5 +1,94 @@
-.main-box__name {
-  color: #6AC1F3; }
+@import url("https://fonts.googleapis.com/css?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Quicksand&display=swap");
+* {
+  margin: 0;
+  padding: 0; }
 
-.main-box__details {
-  color: black; }
+body {
+  font-family: 'Playfair Display', serif;
+  background: #fff;
+  line-height: 1.6;
+  height: 100vh;
+  overflow: hidden; }
+
+.generic-btn {
+  color: #fff;
+  text-decoration: none;
+  text-align: center; }
+  .generic-btn--back-link {
+    width: 100px;
+    padding: 10px;
+    position: absolute;
+    border: none;
+    background-color: #333;
+    z-index: 2;
+    top: 1.2rem;
+    left: 1rem;
+    cursor: pointer; }
+    .generic-btn--back-link:hover {
+      background-color: #fff;
+      color: #333; }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  height: 5rem;
+  background: white; }
+  .navbar__link-wrapper {
+    display: flex;
+    list-style: none;
+    width: 100%;
+    justify-content: center;
+    box-shadow: 4px -8px 20px black; }
+  .navbar__link {
+    margin: 0 1rem;
+    padding: 1rem; }
+    .navbar__link a {
+      text-decoration: none;
+      text-transform: uppercase;
+      color: #333;
+      font-size: 1.8rem; }
+  .navbar--index-page {
+    position: relative; }
+    .navbar--index-page .navbar__link-wrapper {
+      box-shadow: none; }
+    .navbar--index-page .navbar__link a:hover {
+      border-bottom: 2px solid #333; }
+
+.index-page {
+  font-family: 'Roboto Mono', monospace; }
+  .index-page__title {
+    text-align: center;
+    margin: 4rem; }
+
+.smooth-scrolling-page {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory; }
+  .smooth-scrolling-page__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center; }
+    .smooth-scrolling-page__section h1 {
+      font-size: 4rem;
+      color: black; }
+    .smooth-scrolling-page__section p {
+      font-size: 1.5rem;
+      color: black; }
+
+.dynamic-landing-page {
+  font-family: 'Quicksand', sans-serif; }
+  .dynamic-landing-page__title {
+    text-align: center;
+    margin: 4rem; }

@@ -33,8 +33,7 @@ gulp.task("compileSass", function() {
 gulp.task("JS", function() {
   return gulp
     .src([
-      "./src/js/modules/*.js",
-      "./src/js/script.js"
+      "./src/js/**/*"
     ])
     .pipe( concat("index.js") )
     .pipe( uglify() )

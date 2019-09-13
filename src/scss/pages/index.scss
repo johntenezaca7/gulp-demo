@@ -1,0 +1,11 @@
+$object: "index-page";
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+
+.#{$object} {
+  font-family: 'Roboto Mono', monospace;
+
+  &__title {
+    text-align: center;
+    margin: 4rem;
+  }
+}

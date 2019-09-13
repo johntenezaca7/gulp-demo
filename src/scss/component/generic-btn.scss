@@ -1,0 +1,25 @@
+$object: "generic-btn"; 
+
+.#{$object} {
+
+  color: $white;
+  text-decoration: none;
+  text-align: center;
+
+  &--back-link {
+    width: 100px;
+    padding: 10px;
+    position: absolute;
+    border: none;
+    background-color: $black;
+    z-index: 2;
+    top: 1.2rem;
+    left: 1rem;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $white;
+      color: $black;
+    }
+  }
+}

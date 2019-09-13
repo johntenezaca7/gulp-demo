@@ -1,0 +1,35 @@
+$object: "smooth-scrolling-page";
+
+.#{$object} {
+  width: 100%;
+  height: 100%;
+
+  // Scroll Behavior
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    
+    // Scroll Behavior
+    scroll-snap-align: center;
+
+    h1 {
+      font-size: 4rem;
+      color: black;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: black;
+    }
+  }
+}

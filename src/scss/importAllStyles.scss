@@ -1,6 +1,17 @@
 // Variables
 @import "base/variables";
 
-// Components
-@import "component/main-box";
+// Global Styles
+@import "base/global";
 
+// Breakpoints
+@import "base/breakpoints";
+
+// Components
+@import "component/generic-btn";
+@import "component/navbar";
+
+// Pages
+@import "pages/index.scss";
+@import "pages/smooth-scrolling";
+@import "pages/dynamic-landing";
