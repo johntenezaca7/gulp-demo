@@ -1,0 +1,22 @@
+{% extends "../layout/main-layout.html" %}
+{% import "../shared/nav-macro.html" as nav %}
+{% set items = smooth_scroll_nav.items %}
+
+{% block content %}
+
+  <div class="smooth-scrolling-page">
+    <a class="generic-btn generic-btn--back-link" href="index.html">Back</a>
+
+    {{ nav.renderNav(items, "smooth-scrolling-page") }}
+
+    <div class="smooth-scrolling-page__container">
+      {% for item in items %}
+        <section class="smooth-scrolling-page__section" id="{{ item.id }}">
+          <h1>{{ item.sectionTitle }}</h1>
+          <p>{{ item.subtitle }}</p>
+        </section>
+      {% endfor %}
+    </div>
+
+  </div>
+{% endblock %}

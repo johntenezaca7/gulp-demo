@@ -5,6 +5,7 @@ var smoothScrollModule = (function() {
     console.log('Smooth Scroll Module')
   }
 
+  
   return {
     smoothScrollModuleInit: smoothScrollModuleInit
   }

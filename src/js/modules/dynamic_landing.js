@@ -64,10 +64,8 @@
 
 		// Main method
 		dynamicLandingControl.prototype.init = function() {
-			
-      console.log('Dynamic Landing Module Init!');
-      var $dynamic_landing_page = $("dynamic-landing-page");
-      console.log('dynamic_landing_page', $dynamic_landing_page)
+      var $dynamic_landing_page = $(".dynamic-landing-page");
+
       if ( $dynamic_landing_page.length > 0 ) {
         console.log('Ye')
       }
@@ -82,7 +80,7 @@
 	$.fn.dynamicLandingModule = function(options) {
     // Create a dynamicLandingControlInstance instance if not available.
 		if (!this.dynamicLandingControlInstance) {
-			this.dynamicLandingControlInstance = new dynamicLandingControl(this, options || {});
+      this.dynamicLandingControlInstance = new dynamicLandingControl(this, options || {});
 		}
 
 		this.dynamicLandingControlInstance.init();

@@ -26,5 +26,8 @@
     "nodemon": "^1.19.2",
     "pump": "^1.0.1",
     "run-sequence": "^2.1.0"
+  },
+  "dependencies": {
+    "gulp-hub": "^4.2.0"
   }
 }

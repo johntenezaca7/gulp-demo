@@ -2,19 +2,31 @@
   "items": [
     {
       "text": "Home",
-      "link": "#smooth_scroll_home.html"
+      "link": "#smooth_scroll_home",
+      "sectionTitle": "Welcome to my Website!",
+      "id": "smooth_scroll_home",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
     },
     {
       "text": "About",
-      "link": "#smooth_scroll_about.html"
+      "link": "#smooth_scroll_about",
+      "sectionTitle": "About",
+      "id": "smooth_scroll_about",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
     },
     {
       "text": "Service",
-      "link": "#smooth_scroll_service.html"
+      "link": "#smooth_scroll_service",
+      "sectionTitle": "Service",
+      "id": "smooth_scroll_service",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
     },
     {
       "text": "Contact",
-      "link": "#smooth_scroll_contact.html"
+      "link": "#smooth_scroll_contact",
+      "sectionTitle": "Contact",
+      "id": "smooth_scroll_contact",
+      "subtitle": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna."
     }
   ]
 }

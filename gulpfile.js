@@ -1,118 +1,147 @@
-var browserSync = require('browser-sync').create();
-var nunjucksRender = require('gulp-nunjucks-render');
-var jsoncombine = require("gulp-jsoncombine");
-var gulp =  require("gulp");
-var data = require('gulp-data');
-var config = require("./fileConfig");
+var gulp = require("gulp");
 var sass = require("gulp-sass");
 var uglify = require("gulp-uglify");
 var concat = require("gulp-concat");
-
 var JSONDATA = require("./views/data/data.json");
+var browserSync = require("browser-sync").create();
+var jsoncombine = require("gulp-jsoncombine");
+var nunjucksRender = require("gulp-nunjucks-render");
 
-// Watch Files
-var allSCSS = "./src/scss/**/*.scss";
-var allJS = "./src/js/**/*.js";
-var allNJK = "./views/**/*.+(html|njk)";
-var allJSON = "./views/data/**/*.json";
+var config = {
+  source: {
+    sass: "./src/scss/index.scss",
+    js: {
+      init: "./src/js/init.js",
+      all: "./src/js/modules/*.js"
+    },
+    json: "./views/data/modules/*json",
+    njk: "./views/pages/*.html"
+  },
+  dest: {
+    sass: "./public/css/",
+    js: "./public/js/",
+    json: "./views/data/"
+  },
+  watch: {
+    js: "./src/js/**/*.js",
+    scss: "./src/scss/**/*.scss",
+    json: "./views/data/**/*.json",
+    njk: {
+      shared: "./views/shared/*.html",
+      layout: "./views/layout/*.html",
+      pages: "./views/pages/*.html"
+    }
+  }
+};
 
 // Create Web Server
-
 function browserInit() {
-	browserSync.init({
-		// proxy: "us.local.msasafety.com:9001",
-    // browser: ['google-chrome'],
+  browserSync.init({
+    injectChanges: true,
     server: {
-      baseDir: "dist"
-    },
-	})
+      baseDir: "public"
+    }
+  });
 }
 
-// gulp.task('browserSync', function() {
-//   browserSync.init({
-//     server: {
-//       baseDir: "dist"
-//     },
-//   })
-// })
-
-// Compile scss into css and pipe to /dist
-gulp.task("build-SCSS", function() {
-  return  gulp
+// SCSS
+gulp.task("scss", function() {
+  return gulp
     .src(config.source.sass)
-    .pipe( sass() )
+    .pipe(sass())
     .pipe(gulp.dest(config.dest.sass))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
 });
 
-// Bundle and Compile JS
-gulp.task("build-JS", function() {
+gulp.task("build-scss", ["scss"], function() {
+  browserSync.reload();
+});
+// SCSS
+
+// Javascript
+gulp.task("js", function() {
   return gulp
-    .src([
-      "./src/js/modules/*.js",
-      "./src/js/init.js"
-    ])
-    .pipe( concat("index.js") )
-    .pipe( uglify() )
-    .pipe( gulp.dest(config.dest.js))
-    .pipe(browserSync.reload({
-      stream: true
-    }));
-    
+    .src([config.source.js.all, config.source.js.init])
+    .pipe(concat("index.js"))
+    .pipe(uglify())
+    .pipe(gulp.dest(config.dest.js))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
 });
 
-// Compile JSON 
-gulp.task("build-JSON", function() {
+gulp.task("build-js", ["js"], function() {
+  browserSync.reload();
+});
+// Javascript
+
+// JSON
+gulp.task("json", function() {
   return gulp
-    .src("./views/data/modules/*.json")
-    .pipe(jsoncombine("data.json",function(data){
-      return new Buffer(JSON.stringify(data));
-    }))
-    .pipe(gulp.dest("./views/data"));
+    .src(config.source.json)
+    .pipe(
+      jsoncombine("data.json", function(data) {
+        return new Buffer(JSON.stringify(data));
+      })
+    )
+    .pipe(gulp.dest(config.dest.json))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
 });
 
-// Compule Nunjucks
-gulp.task("build-NJK", function() {
-  // Gets .html and .nunjucks files in pages
-  return gulp
-    .src(["./views/pages/**/*.+(html|njk)"])
-    // Renders template with nunjucks
-    .pipe(nunjucksRender({
-        path: ["./views/templates"],
+gulp.task("build-json", ["json"], function() {
+  browserSync.reload();
+});
+// JSON
+
+// NJK
+gulp.task("njk", function() {
+  gulp
+    .src(config.source.njk)
+    .pipe(
+      nunjucksRender({
+        path: ["./views/layout", "./views/shared"],
         data: JSONDATA
-      }))
-    // output files in app folder
-    .pipe(gulp.dest("./dist"));
+      })
+    )
+    .pipe(gulp.dest("./public"))
+    .pipe(
+      browserSync.reload({
+        stream: true
+      })
+    );
 });
 
-gulp.task("scss-dev", ["build-SCSS"], function () {
-	browserSync.reload();
-})
-
-gulp.task("js-dev", ["build-JS"], function() {
+gulp.task("build-njk", ["njk"], function() {
   browserSync.reload();
 });
+// NJK
 
-gulp.task("json-dev", ["build-JSON"], function() {
-  browserSync.reload();
-});
+gulp.task(
+  "default",
+  ["build-scss", "build-js", "build-json", "build-njk"],
+  function() {
+    browserSync.reload();
+  }
+);
 
-gulp.task("njk-dev", ["build-NJK"], function(done) {
-  browserSync.reload();
-});
-
-gulp.task("watch",function() {
+gulp.task("watch", function() {
   browserInit();
 
-  gulp.watch( allSCSS , ["scss-dev"]);
-  gulp.watch( allJS, ["js-dev"]);
-  // Compile JSON First!
-  gulp.watch( allJSON, ['json-dev']);
-  gulp.watch( allNJK, ["njk-dev"]);
+  gulp.watch(config.watch.scss, ["default"]);
+  gulp.watch(config.watch.js, ["default"]);
+  gulp.watch(config.watch.json, ["default"]);
+  gulp.watch(
+    [config.watch.njk.shared, config.watch.njk.layout, config.watch.njk.pages],
+    ["default"]
+  );
 });
-
-gulp.task("gulp",["watch"]);
-
-module.exports = gulp;
