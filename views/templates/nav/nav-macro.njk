@@ -1,0 +1,13 @@
+{% macro renderNav(items, page="") %}
+
+  <nav class="navbar navbar--{{ page }}">
+    <ul class="navbar__link-wrapper">
+      {% for item in items %}
+        <li class="navbar__link">
+          <a href="{{ item.link }}">{{ item.text }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+
+{% endmacro %}

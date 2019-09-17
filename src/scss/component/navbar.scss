@@ -47,4 +47,12 @@ $object: "navbar";
       }
     }
   }
+
+  &--smooth-scroll-page {
+    .#{$object} {
+      &__link-wrapper {
+        box-shadow: 4px -8px 20px rgb(0, 0, 0);
+      }
+    }
+  }
 }

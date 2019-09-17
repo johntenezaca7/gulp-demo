@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "text": "Smooth Scroll Landing",
+      "link": "./smooth_scroll_landing.html"
+    },
+    {
+      "text": "Dynamic Landing",
+      "link": "./dynamic_landing.html"
+    },
+    {
+      "text": "Webpage 2",
+      "link": "#"
+    },
+    {
+      "text": "Webpage 3",
+      "link": "#"
+    }
+  ]
+}

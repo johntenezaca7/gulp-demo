@@ -1,0 +1,20 @@
+{
+  "items": [
+    {
+      "text": "Home",
+      "link": "#smooth_scroll_home.html"
+    },
+    {
+      "text": "About",
+      "link": "#smooth_scroll_about.html"
+    },
+    {
+      "text": "Service",
+      "link": "#smooth_scroll_service.html"
+    },
+    {
+      "text": "Contact",
+      "link": "#smooth_scroll_contact.html"
+    }
+  ]
+}

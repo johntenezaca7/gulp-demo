@@ -1,0 +1,11 @@
+{% extends "../templates/main-layout.njk" %}
+{% import "../templates/nav/nav-macro.njk" as nav %}
+{% set items = index_nav.items %}
+
+
+{% block content %}
+<div class="index-page">
+  <h1 class="index-page__title">Select Website</h1>
+  {{ nav.renderNav(items, "index-page") }}
+</div>
+{% endblock %}

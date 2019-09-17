@@ -1,10 +1,11 @@
 module.exports = {
   source: {
     sass: "./src/scss/importAllStyles.scss",
-    js: "./src/js/script.js"
+    js: "./src/js/init.js"
   },
   dest: {
     sass: "./dist/css/",
-    js: "./dist/js/"
+    js: "./dist/js/",
+    njk: "./dist/njk/"
   },
 }

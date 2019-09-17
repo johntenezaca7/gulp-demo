@@ -58,6 +58,8 @@ body {
       box-shadow: none; }
     .navbar--index-page .navbar__link a:hover {
       border-bottom: 2px solid #333; }
+  .navbar--smooth-scroll-page .navbar__link-wrapper {
+    box-shadow: 4px -8px 20px black; }
 
 .index-page {
   font-family: 'Roboto Mono', monospace; }
@@ -88,7 +90,14 @@ body {
       color: black; }
 
 .dynamic-landing-page {
-  font-family: 'Quicksand', sans-serif; }
-  .dynamic-landing-page__title {
-    text-align: center;
-    margin: 4rem; }
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Quicksand', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  color: #333; }
